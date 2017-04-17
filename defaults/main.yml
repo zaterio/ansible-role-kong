@@ -55,3 +55,6 @@ kong_conf_databases_available:
 kong_conf_database_cache_expiration: 5
 kong_conf_send_anonymous_reports: true
 kong_conf_memory_cache_size: 128
+kong_conf_database_pg_user: "kong"
+kong_conf_database_pg_password: "kong"
+kong_conf_database_pg_database: "kong"
