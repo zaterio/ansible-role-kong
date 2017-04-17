@@ -22,9 +22,9 @@ database: {{ kong_conf_database }}
 
 {% if kong_conf_database == "postgres" %}
 ## Databases configuration
-pg_user: "{{ pg_user }}"
-pg_password: "{{ pg_password}}"
-pg_database: "{{ pg_database }}"
+pg_user: "{{ kong_conf_database_pg_user }}"
+pg_password: "{{ kong_conf_database_pg_password }}"
+pg_database: "{{ kong_conf_database_pg_database }}"
 {% endif %}
 
 {% if kong_conf_database == "cassandra" %}
