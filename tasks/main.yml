@@ -28,5 +28,17 @@
   notify:
    - restart kong
 
+- name: fix pg_password
+  lineinfile:
+   regexp: '^pg_password'
+   dest: /usr/local/share/lua/5.1/kong/templates/kong_defaults.lua
+   line: 'pg_password = {{ kong_conf_database_pg_password }}'
+
+- name: fix permissions
+  file:
+   path: /usr/local/kong/logs/serf.log
+   owner: kong
+   group: kong 
+   
 - name: Setup service
   service: name=kong state={{ kong_service_state }} enabled={{ kong_service_enabled }}
