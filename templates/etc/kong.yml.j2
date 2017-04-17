@@ -20,12 +20,20 @@ dnsmasq_port: {{ kong_conf_dnsmasq_port }}
 ## Specify the DAO to use
 database: {{ kong_conf_database }}
 
+{% if kong_conf_database == "postgres" %}
+## Databases configuration
+pg_user: "{{ pg_user }}"
+pg_password: "{{ pg_password}}"
+pg_database: "{{ pg_database }}"
+{% endif %}
+
+{% if kong_conf_database == "cassandra" %}
 ## Databases configuration
 databases_available: 
   {{ kong_conf_databases_available|to_nice_yaml }}
-
 ## Cassandra cache configuration
 database_cache_expiration: {{ kong_conf_database_cache_expiration }} # in seconds
+{% endif %}
 
 ## SSL Settings
 ## (Uncomment the two properties below to set your own certificate)
